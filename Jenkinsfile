@@ -18,7 +18,6 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
           sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
           sh 'docker push $DOCKER_BFLASK_IMAGE'
-	  sh 'docker stop my-flask-app'
 	  sh 'docker run  -d -p   8081:5000 my-flask-app'
         }
       }
