@@ -4,6 +4,8 @@ WORKDIR /flask_app
 
 COPY requirements.txt .
 
+RUN cat requirements.txt
+
 RUN pip install  requirements.txt
 
 RUN pip install pytest
