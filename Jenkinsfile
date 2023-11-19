@@ -47,7 +47,9 @@ pipeline {
 	stage('Deploy App in EKS Cluster') {
             steps {
 		script {
-        	   sh './kubectl apply -f eks-deploy-k8s.yaml'
+		   sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+        	   sh 'chmod u+x ./kubectl'
+        	   sh './kubectl apply -f eks-deploy-proyect.yml'
 		}
         
             }
