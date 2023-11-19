@@ -4,7 +4,7 @@ WORKDIR /flask_app
 
 COPY requirements.txt .
 
-COPY /home/ec2-user/bin/kubectl kubectl
+COPY --from=kubectl  /home/ec2-user/bin/kubectl /usr/local/bin/
 
 RUN pip install --no-cache-dir -r requirements.txt
 
