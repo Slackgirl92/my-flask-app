@@ -19,7 +19,7 @@ spec:
         image: 710255125651.dkr.ecr.us-east-1.amazonaws.com/flask-project:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 5001
           name: http
           protocol: TCP
 # service type loadbalancer       
@@ -36,7 +36,7 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: 8085
+    targetPort: 5001
   type: LoadBalancer
   selector:
     app: flask-app
