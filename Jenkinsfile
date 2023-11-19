@@ -7,7 +7,7 @@ pipeline {
         AWS_DEFAULT_REGION="us-east-1" 
 	DESIRED_COUNT="1"
         IMAGE_REPO_NAME="flask-project"
-	EKS_CLUSTER_NAME="flask-project"
+	EKS_CLUSTER_NAME="flask-eks"
         IMAGE_TAG="latest"
         REPOSITORY_URI = "${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${IMAGE_REPO_NAME}"
   }
@@ -36,8 +36,13 @@ pipeline {
             }
         }
 
-
-
+	stage('Integrate Jenkins with EKS Cluster') {
+	    steps{
+		    script{
+			 sh 'aws eks update-kubeconfig --name ${EKS_CLUSTER_NAME} --region ${AWS_DEFAULT_REGION}'   
+		    }
+	    }
+	}
 
 
   }
