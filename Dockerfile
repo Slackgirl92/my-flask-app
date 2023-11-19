@@ -14,5 +14,7 @@ COPY app/ .
 
 COPY tests/ app/tests/
 
+EXPOSE 5001
+
 CMD [ "python", "app.py" ]   
 
