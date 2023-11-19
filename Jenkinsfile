@@ -44,6 +44,15 @@ pipeline {
 	    }
 	}
 
+	stage('Deploy App in EKS Cluster') {
+            steps {
+		script {
+        	   sh './kubectl apply -f eks-deploy-k8s.yaml'
+		}
+        
+            }
+        }
+
 
   }
   post {
