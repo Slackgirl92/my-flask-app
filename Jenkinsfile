@@ -25,7 +25,7 @@ pipeline {
 
 	 stage('Build') {
       	  steps {
-           sh 'docker build -t my-flask-app:${IMAGE_TAG} .'
+           sh 'docker build -t {IMAGE_REPO_NAME} .'
       	  }
     	}
 
